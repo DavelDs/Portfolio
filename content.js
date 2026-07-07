@@ -19,28 +19,38 @@ if (portfolioContent) {
         </div>
       </div>
 
-      <aside class="profile-card reveal" aria-label="Profile summary">
-        <div class="profile-glow"></div>
-        <figure class="avatar">
-          <img src="Assets/Profil.jpeg" alt="Profile photo of Davis Ariel" />
-        </figure>
-        <p class="profile-label">Open to Internship</p>
-        <h2>Davis Ariel</h2>
-        <div class="profile-stats">
-          <div>
-            <strong>3.34</strong>
-            <span>Current GPA</span>
-          </div>
-          <div>
-            <strong>2027</strong>
-            <span>Expected graduation</span>
-          </div>
-          <div>
-            <strong>2x</strong>
-            <span>PICF gold medals</span>
-          </div>
+      <div class="profile-stack">
+        <div class="tech-emblems" aria-hidden="true">
+          <span class="tech-emblem emblem-data">DATA</span>
+          <span class="tech-emblem emblem-web">WEB</span>
+          <span class="tech-emblem emblem-qa">QA</span>
+          <span class="tech-emblem emblem-ai">AI</span>
+          <span class="tech-emblem emblem-py">PY</span>
         </div>
-      </aside>
+
+        <aside class="profile-card reveal" aria-label="Profile summary">
+          <div class="profile-glow"></div>
+          <figure class="avatar">
+            <img src="Assets/Profil.jpeg" alt="Profile photo of Davis Ariel" />
+          </figure>
+          <p class="profile-label">Open to Internship</p>
+          <h2>Davis Ariel</h2>
+          <div class="profile-stats">
+            <div>
+              <strong>3.34</strong>
+              <span>Current GPA</span>
+            </div>
+            <div>
+              <strong>2027</strong>
+              <span>Expected graduation</span>
+            </div>
+            <div>
+              <strong>2x</strong>
+              <span>PICF gold medals</span>
+            </div>
+          </div>
+        </aside>
+      </div>
     </section>
 
     <section class="section about-grid" id="about">
@@ -313,10 +323,21 @@ if (portfolioContent) {
     <section class="section" id="projects">
       <div class="section-heading reveal">
         <p class="eyebrow">Projects</p>
-        <h2>Academic projects and achievements from the resume.</h2>
+        <h2>Academic projects, game development, and product ideas.</h2>
       </div>
 
       <div class="project-grid">
+        <article class="project-card reveal">
+          <div class="project-tag">Game Development</div>
+          <h3>Confined</h3>
+          <p>
+            Built with a team for a Game Development course, Confined is a first-person
+            survival horror game set inside a dark cave system. Players rely on a
+            flashlight, limited ammunition, a hidden pistol, and a pickaxe while surviving
+            spider attacks and searching for a way out.
+          </p>
+          <a href="https://nevanoz.itch.io/confined" target="_blank" rel="noreferrer">View Details</a>
+        </article>
         <article class="project-card reveal">
           <div class="project-tag">Web</div>
           <h3>Bangka Tourism Website</h3>
@@ -324,7 +345,7 @@ if (portfolioContent) {
             Developed a website showcasing Bangka tourism and local cuisine as part of
             web development learning.
           </p>
-          <a href="#home">View page</a>
+          <a href="https://mybabel24.vercel.app/" target="_blank" rel="noreferrer">View website</a>
         </article>
         <article class="project-card reveal">
           <div class="project-tag">Academic</div>
@@ -333,16 +354,15 @@ if (portfolioContent) {
             Built a website for an orphanage as an academic project, practicing content
             structure, visual layout, and front-end implementation.
           </p>
-          <a href="#experience">See experience</a>
         </article>
         <article class="project-card reveal">
           <div class="project-tag">Prototype</div>
-          <h3>Security App Concept</h3>
+          <h3>SafeU</h3>
           <p>
             Created a security app prototype connected to a smartwatch to detect danger
             zones and report to the nearest safe station.
           </p>
-          <a href="#contact">Update later</a>
+          <a href="https://www.figma.com/proto/8qom4VLBDqBDIOdbrLLCJn/SAFEU---HCI?node-id=634-5585&starting-point-node-id=634%3A5585&scaling=contain&content-scaling=fixed" target="_blank" rel="noreferrer">View Figma prototype</a>
         </article>
       </div>
     </section>

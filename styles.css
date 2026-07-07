@@ -11,10 +11,33 @@
   --line: rgba(244, 239, 230, 0.14);
   --on-accent: #080b10;
   --body-bg:
-    radial-gradient(circle at top left, rgba(67, 198, 182, 0.16), transparent 32rem),
-    radial-gradient(circle at 88% 14%, rgba(214, 180, 106, 0.13), transparent 28rem),
+    radial-gradient(
+      circle at top left,
+      rgba(67, 198, 182, 0.16),
+      transparent 32rem
+    ),
+    radial-gradient(
+      circle at 88% 14%,
+      rgba(214, 180, 106, 0.13),
+      transparent 28rem
+    ),
     linear-gradient(135deg, #080b10 0%, #111821 56%, #090d13 100%);
   --grid-line: rgba(244, 239, 230, 0.035);
+  --signal-line: rgba(67, 198, 182, 0.18);
+  --signal-soft: rgba(244, 239, 230, 0.05);
+  --signal-gold: rgba(240, 207, 122, 0.18);
+  --signal-glow: rgba(67, 198, 182, 0.16);
+  --emblem-bg: rgba(20, 27, 36, 0.68);
+  --emblem-border: rgba(244, 239, 230, 0.18);
+  --emblem-glow: rgba(67, 198, 182, 0.2);
+  --premium-gradient: linear-gradient(
+    105deg,
+    var(--ink) 0%,
+    var(--fern) 28%,
+    var(--sun) 52%,
+    var(--ink) 76%,
+    var(--fern) 100%
+  );
   --header-bg: rgba(13, 17, 24, 0.78);
   --mobile-nav-bg: #0d1118;
   --nav-hover-bg: rgba(214, 180, 106, 0.13);
@@ -27,7 +50,11 @@
     var(--paper-strong);
   --profile-glow: rgba(67, 198, 182, 0.25);
   --contact-bg:
-    radial-gradient(circle at 18% 0%, rgba(67, 198, 182, 0.18), transparent 34%),
+    radial-gradient(
+      circle at 18% 0%,
+      rgba(67, 198, 182, 0.18),
+      transparent 34%
+    ),
     linear-gradient(135deg, #11100e, #1d1b18 72%);
   --contact-text: rgba(244, 239, 230, 0.74);
   --link-chip-border: rgba(244, 239, 230, 0.22);
@@ -49,10 +76,33 @@
   --line: rgba(24, 32, 43, 0.14);
   --on-accent: #14100a;
   --body-bg:
-    radial-gradient(circle at top left, rgba(21, 138, 130, 0.13), transparent 31rem),
-    radial-gradient(circle at 88% 14%, rgba(219, 168, 61, 0.18), transparent 28rem),
+    radial-gradient(
+      circle at top left,
+      rgba(21, 138, 130, 0.13),
+      transparent 31rem
+    ),
+    radial-gradient(
+      circle at 88% 14%,
+      rgba(219, 168, 61, 0.18),
+      transparent 28rem
+    ),
     linear-gradient(135deg, #fbf8f0 0%, #edf5f4 56%, #f8f2e4 100%);
   --grid-line: rgba(24, 32, 43, 0.055);
+  --signal-line: rgba(21, 138, 130, 0.14);
+  --signal-soft: rgba(24, 32, 43, 0.045);
+  --signal-gold: rgba(219, 168, 61, 0.17);
+  --signal-glow: rgba(21, 138, 130, 0.14);
+  --emblem-bg: rgba(255, 255, 255, 0.58);
+  --emblem-border: rgba(24, 32, 43, 0.14);
+  --emblem-glow: rgba(21, 138, 130, 0.16);
+  --premium-gradient: linear-gradient(
+    105deg,
+    var(--ink) 0%,
+    var(--fern) 28%,
+    var(--sun) 52%,
+    var(--ink) 76%,
+    var(--fern) 100%
+  );
   --header-bg: rgba(255, 252, 244, 0.78);
   --mobile-nav-bg: #fffcf4;
   --nav-hover-bg: rgba(219, 168, 61, 0.18);
@@ -61,11 +111,19 @@
   --surface-strong: rgba(24, 32, 43, 0.045);
   --secondary-bg: rgba(255, 255, 255, 0.52);
   --profile-bg:
-    linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(250, 244, 232, 0.88)),
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.95),
+      rgba(250, 244, 232, 0.88)
+    ),
     var(--paper-strong);
   --profile-glow: rgba(21, 138, 130, 0.16);
   --contact-bg:
-    radial-gradient(circle at 18% 0%, rgba(21, 138, 130, 0.14), transparent 34%),
+    radial-gradient(
+      circle at 18% 0%,
+      rgba(21, 138, 130, 0.14),
+      transparent 34%
+    ),
     linear-gradient(135deg, #fffaf0, #f0e9dc 72%);
   --contact-text: rgba(24, 32, 43, 0.72);
   --link-chip-border: rgba(24, 32, 43, 0.16);
@@ -87,19 +145,99 @@ body {
   color: var(--ink);
   font-family: "Manrope", sans-serif;
   background: var(--body-bg);
-  transition: color 180ms ease, background 180ms ease;
+  overflow-x: hidden;
+  transition:
+    color 180ms ease,
+    background 180ms ease;
 }
 
 body::before {
   content: "";
   position: fixed;
   inset: 0;
+  z-index: 0;
   pointer-events: none;
   background-image:
     linear-gradient(var(--grid-line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-  background-size: 42px 42px;
-  mask-image: linear-gradient(to bottom, black, transparent 75%);
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
+    repeating-linear-gradient(
+      112deg,
+      transparent 0 88px,
+      var(--signal-soft) 88px 89px,
+      transparent 89px 176px
+    ),
+    repeating-linear-gradient(
+      68deg,
+      transparent 0 124px,
+      var(--signal-line) 124px 126px,
+      transparent 126px 248px
+    );
+  background-position:
+    0 0,
+    0 0,
+    0 0,
+    0 0;
+  background-size:
+    42px 42px,
+    42px 42px,
+    360px 360px,
+    520px 520px;
+  opacity: 0.72;
+  animation: signal-drift 26s linear infinite;
+  mask-image: linear-gradient(to bottom, black 0%, black 80%, transparent 100%);
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: -24% -16%;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    conic-gradient(
+      from 236deg at 18% 34%,
+      transparent 0deg,
+      var(--signal-glow) 18deg,
+      transparent 42deg
+    ),
+    conic-gradient(
+      from 42deg at 80% 18%,
+      transparent 0deg,
+      var(--signal-gold) 16deg,
+      transparent 38deg
+    ),
+    conic-gradient(
+      from 318deg at 68% 78%,
+      transparent 0deg,
+      var(--signal-line) 14deg,
+      transparent 34deg
+    ),
+    radial-gradient(
+      ellipse at 18% 34%,
+      rgba(67, 198, 182, 0.22),
+      transparent 20rem
+    ),
+    radial-gradient(
+      ellipse at 82% 20%,
+      rgba(214, 180, 106, 0.19),
+      transparent 19rem
+    ),
+    radial-gradient(
+      ellipse at 55% 82%,
+      rgba(67, 198, 182, 0.12),
+      transparent 24rem
+    );
+  filter: blur(0.3px);
+  opacity: 0.95;
+  transform: translate3d(-4%, 0, 0) rotate(-2deg);
+  animation: aurora-signal 11s ease-in-out infinite alternate;
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 12%,
+    black 88%,
+    transparent 100%
+  );
 }
 
 a {
@@ -108,8 +246,73 @@ a {
 }
 
 .page-shell {
+  position: relative;
+  z-index: 1;
   width: min(1120px, calc(100% - 32px));
   margin: 0 auto;
+}
+
+@keyframes signal-drift {
+  from {
+    background-position:
+      0 0,
+      0 0,
+      0 0,
+      0 0;
+  }
+
+  to {
+    background-position:
+      42px 42px,
+      42px 42px,
+      180px 120px,
+      -260px 180px;
+  }
+}
+
+@keyframes aurora-signal {
+  from {
+    transform: translate3d(-4%, 0, 0) rotate(-2deg) scale(1);
+  }
+
+  to {
+    transform: translate3d(5%, -3%, 0) rotate(2deg) scale(1.04);
+  }
+}
+
+@keyframes emblem-float {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+
+  50% {
+    translate: 0 -14px;
+  }
+}
+
+@keyframes skill-title-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::before,
+  body::after,
+  .tech-emblem,
+  .skill-card h3,
+  .project-card:hover h3 {
+    animation: none;
+  }
 }
 
 .site-header {
@@ -218,7 +421,9 @@ a {
   border-radius: 50%;
   background: var(--sun);
   box-shadow: 0 0 0 4px rgba(214, 180, 106, 0.14);
-  transition: transform 180ms ease, background 180ms ease;
+  transition:
+    transform 180ms ease,
+    background 180ms ease;
 }
 
 :root[data-theme="light"] .theme-toggle-thumb {
@@ -237,11 +442,141 @@ img {
 }
 
 .hero {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.72fr);
-  gap: 42px;
+  grid-template-areas:
+    "copy profile"
+    "emblems profile";
+  gap: 18px 42px;
   align-items: center;
   min-height: calc(100vh - 86px);
+}
+
+.tech-emblems {
+  position: relative;
+  z-index: 2;
+  grid-area: emblems;
+  width: min(100%, 620px);
+  height: 128px;
+  margin-top: -4px;
+  pointer-events: none;
+}
+
+.tech-emblem {
+  position: absolute;
+  display: grid;
+  width: clamp(46px, 4.8vw, 64px);
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid var(--emblem-border);
+  border-radius: 24%;
+  color: var(--ink);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.16), transparent 34%),
+    linear-gradient(
+      120deg,
+      rgba(67, 198, 182, 0.2),
+      rgba(214, 180, 106, 0.16),
+      rgba(67, 198, 182, 0.14)
+    ),
+    var(--emblem-bg);
+  background-size:
+    100% 100%,
+    220% 220%,
+    100% 100%;
+  box-shadow:
+    0 18px 48px rgba(0, 0, 0, 0.2),
+    0 0 38px var(--emblem-glow),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(0.7rem, 0.95vw, 0.86rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  backdrop-filter: blur(18px);
+  transform: rotate(var(--emblem-tilt, 0deg));
+  animation:
+    emblem-float 6.5s ease-in-out infinite,
+    skill-title-gradient 7s ease-in-out infinite;
+}
+
+.tech-emblem::before,
+.tech-emblem::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.tech-emblem::before {
+  inset: -5px;
+  border: 1px solid rgba(67, 198, 182, 0.24);
+  border-radius: 28%;
+  box-shadow:
+    0 0 24px var(--emblem-glow),
+    inset 0 0 0 1px rgba(214, 180, 106, 0.12);
+  opacity: 0.72;
+}
+
+.tech-emblem::after {
+  inset: 10px;
+  border: 1px solid rgba(244, 239, 230, 0.16);
+  border-radius: 18%;
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0 46%,
+      rgba(214, 180, 106, 0.22) 47% 53%,
+      transparent 54%
+    ),
+    linear-gradient(
+      0deg,
+      transparent 0 46%,
+      rgba(67, 198, 182, 0.18) 47% 53%,
+      transparent 54%
+    );
+  opacity: 0.72;
+}
+
+.emblem-data {
+  --emblem-tilt: -9deg;
+  --emblem-glow: rgba(67, 198, 182, 0.28);
+  top: 8px;
+  left: 1%;
+}
+
+.emblem-web {
+  --emblem-tilt: 8deg;
+  --emblem-glow: rgba(240, 207, 122, 0.24);
+  top: 24px;
+  left: 20%;
+  animation-delay: -1.4s;
+}
+
+.emblem-qa {
+  --emblem-tilt: -4deg;
+  --emblem-glow: rgba(244, 239, 230, 0.18);
+  top: 24px;
+  right: 16%;
+  z-index: 2;
+  animation-delay: -2.7s;
+}
+
+.emblem-ai {
+  --emblem-tilt: 11deg;
+  --emblem-glow: rgba(67, 198, 182, 0.25);
+  top: 4px;
+  left: 42%;
+  z-index: 1;
+  animation-delay: -3.8s;
+}
+
+.emblem-py {
+  --emblem-tilt: 5deg;
+  --emblem-glow: rgba(214, 180, 106, 0.26);
+  top: 14px;
+  right: 0;
+  animation-delay: -5s;
 }
 
 .eyebrow {
@@ -304,6 +639,12 @@ h4 {
   max-width: 650px;
 }
 
+.hero-copy {
+  position: relative;
+  z-index: 3;
+  grid-area: copy;
+}
+
 .hero-actions {
   flex-wrap: wrap;
   gap: 14px;
@@ -319,7 +660,9 @@ h4 {
   border: 1px solid var(--ink);
   border-radius: 999px;
   font-weight: 800;
-  transition: transform 180ms ease, box-shadow 180ms ease;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
 }
 
 .btn:hover {
@@ -339,6 +682,8 @@ h4 {
 
 .profile-card {
   position: relative;
+  z-index: 3;
+  grid-area: profile;
   overflow: hidden;
   padding: 28px;
   border: 1px solid var(--line);
@@ -429,7 +774,20 @@ h4 {
 }
 
 .section-heading {
+  position: relative;
   max-width: 760px;
+}
+
+.section-heading::after {
+  content: "";
+  display: block;
+  width: 92px;
+  height: 3px;
+  margin-top: 22px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--fern), var(--sun), transparent);
+  box-shadow: 0 0 24px var(--emblem-glow);
+  opacity: 0.78;
 }
 
 .about-content {
@@ -485,6 +843,12 @@ h4 {
 
 .skill-card h3 {
   margin-bottom: 22px;
+  color: transparent;
+  background-image: var(--premium-gradient);
+  background-size: 260% 260%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: skill-title-gradient 5.5s ease-in-out infinite;
 }
 
 .skill-list {
@@ -655,7 +1019,10 @@ h4 {
   border-radius: 50%;
   background: var(--dot-idle);
   cursor: pointer;
-  transition: transform 160ms ease, background 160ms ease, box-shadow 160ms ease;
+  transition:
+    transform 160ms ease,
+    background 160ms ease,
+    box-shadow 160ms ease;
 }
 
 .carousel-dot.active,
@@ -709,6 +1076,19 @@ h4 {
   min-height: 250px;
 }
 
+.project-card h3 {
+  transition: color 180ms ease;
+}
+
+.project-card:hover h3 {
+  color: transparent;
+  background-image: var(--premium-gradient);
+  background-size: 240% 240%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: skill-title-gradient 5s ease-in-out infinite;
+}
+
 .project-photo {
   width: 100%;
   aspect-ratio: 16 / 11;
@@ -755,7 +1135,9 @@ h4 {
 .reveal {
   opacity: 0;
   transform: translateY(22px);
-  transition: opacity 600ms ease, transform 600ms ease;
+  transition:
+    opacity 600ms ease,
+    transform 600ms ease;
 }
 
 .reveal.visible {
@@ -808,6 +1190,13 @@ h4 {
     grid-template-columns: 1fr;
   }
 
+  .hero {
+    grid-template-areas:
+      "copy"
+      "emblems"
+      "profile";
+  }
+
   .skill-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -815,6 +1204,42 @@ h4 {
   .hero {
     min-height: auto;
     padding-top: 72px;
+  }
+
+  .tech-emblems {
+    position: relative;
+    grid-area: emblems;
+    height: 104px;
+    margin: -12px 0 4px;
+  }
+
+  .tech-emblem {
+    width: 64px;
+  }
+
+  .emblem-data {
+    top: 8px;
+    left: 7%;
+  }
+
+  .emblem-web {
+    top: 34px;
+    right: 11%;
+  }
+
+  .emblem-qa {
+    right: 38%;
+    bottom: 4px;
+  }
+
+  .emblem-ai {
+    top: 0;
+    right: 33%;
+  }
+
+  .emblem-py {
+    left: 32%;
+    bottom: 11px;
   }
 
   h1 {
@@ -889,11 +1314,22 @@ h4 {
     grid-template-columns: 1fr;
   }
 
+  .tech-emblems {
+    height: 86px;
+  }
+
+  .tech-emblem {
+    width: 54px;
+    font-size: 0.74rem;
+  }
+
+  .emblem-ai,
+  .emblem-py {
+    display: none;
+  }
+
   .hero-actions .btn,
   .contact-links a {
     width: 100%;
   }
 }
-
-
-
